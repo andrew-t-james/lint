@@ -1,0 +1,45 @@
+{
+  "name": "@andrew-t-james/le-goo",
+  "version": "1.0.0",
+  "description": "A CLI to bootstrap eslint/prettier configuration for js/ts projects",
+  "main": "src/index.js",
+  "bin": "bin/le-goo",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "create-project"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "arg": "^4.1.0",
+    "chalk": "^2.4.2",
+    "covgen": "^3.1.0",
+    "esm": "^3.2.18",
+    "execa": "^2.0.4",
+    "gitignore": "^0.6.0",
+    "inquirer": "^7.0.0",
+    "listr": "^0.14.3",
+    "ncp": "^2.0.0",
+    "pkg-install": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "*",
+    "babel-loader": "*",
+    "eslint": "6.5.1",
+    "eslint-config-prettier": "6.3.0",
+    "eslint-plugin-prettier": "3.1.1",
+    "prettier": "*",
+    "prettier-package-json": "2.1.0"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "templates/"
+  ]
+}
