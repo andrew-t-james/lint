@@ -26,7 +26,7 @@ async function createGitignore(options) {
   );
   return writeGitignore({
     type: "Node",
-    file: file
+    file
   });
 }
 
@@ -82,11 +82,11 @@ export async function createProject(options) {
   const tasks = new Listr(
     [
       {
-        title: "Copy project files",
+        title: "Copying project files",
         task: () => copyTemplateFiles(options)
       },
       {
-        title: "Create gitignore",
+        title: "Creating git ignore file",
         task: () => createGitignore(options)
       },
       {
@@ -117,12 +117,12 @@ export async function createProject(options) {
         }
       },
       {
-        title: "Initialize git",
+        title: "Initializing git",
         task: () => initGit(options),
         enabled: () => options.git
       },
       {
-        title: "Committing files git",
+        title: "Committing files to git",
         task: () => commitAndAdd(options),
         enabled: () => options.git
       }
@@ -133,6 +133,9 @@ export async function createProject(options) {
   );
 
   await tasks.run();
-  console.log("%s Project ready", chalk.green.bold("DONE"));
+  console.log(
+    "\n%s setting up your lazy lint project\n",
+    chalk.green.bold("DONE")
+  );
   return true;
 }
