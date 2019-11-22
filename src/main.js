@@ -7,7 +7,7 @@ import ncp from "ncp";
 import path from "path";
 import { install } from "pkg-install";
 import { promisify } from "util";
-import { logger } from "../utils";
+import { loggr } from "../utils";
 
 const access = promisify(fs.access);
 // const writeFile = promisify(fs.writeFile);
@@ -76,7 +76,7 @@ export async function createProject(options) {
   try {
     await access(templateDir, fs.constants.R_OK);
   } catch (err) {
-    log("error", "%s Invalid template name", chalk.red.bold("ERROR"));
+    loggr("error", "%s Invalid template name", chalk.red.bold("ERROR"));
     process.exit(1);
   }
 
@@ -134,7 +134,7 @@ export async function createProject(options) {
   );
 
   await tasks.run();
-  logger(
+  loggr(
     "log",
     "\n%s setting up your lazy lint project\n",
     chalk.green.bold("DONE")
