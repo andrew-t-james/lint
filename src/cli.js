@@ -3,27 +3,23 @@ import inquirer from "inquirer";
 import { createProject } from "./main";
 
 function parseArgsIntoOptions(rawArgs) {
-  const args = arg(
-    {
-      "--git": Boolean,
-      "--install": Boolean,
-      "--yes": Boolean,
-      "-g": "--git",
-      "-i": "--install",
-      "-y": "--yes"
-    },
-    {
-      argv: rawArgs.slice(2)
-    }
-  );
+  const flags = {
+    "--git": Boolean,
+    "--install": Boolean,
+    "--yes": Boolean,
+    "-g": "--git",
+    "-i": "--install",
+    "-y": "--yes"
+  };
+  const args = arg(flags, {
+    argv: rawArgs.slice(2)
+  });
 
   const directory = args._[0]
     ? args._.slice(0)
         .map(s => s.toLowerCase())
         .join("-")
     : ".";
-
-  console.log("directory:", directory);
 
   return {
     skipPrompts: args["--yes"] || false,
