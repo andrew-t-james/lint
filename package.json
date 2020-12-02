@@ -1,9 +1,11 @@
 {
-  "name": "@andrew-t-james/le-goo",
+  "name": "@andrew-t-james/lint",
   "version": "1.0.0",
   "description": "A CLI to bootstrap eslint/prettier configuration for js/ts projects",
   "main": "src/index.js",
-  "bin": "bin/le-goo",
+  "bin": {
+    "lint": "bin/lint"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -29,12 +31,12 @@
     "pkg-install": "^1.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "*",
-    "babel-loader": "*",
+    "babel-eslint": "10.0.3",
+    "babel-loader": "8.0.6",
     "eslint": "6.5.1",
     "eslint-config-prettier": "6.3.0",
     "eslint-plugin-prettier": "3.1.1",
-    "prettier": "*",
+    "prettier": "1.18.2",
     "prettier-package-json": "2.1.0"
   },
   "files": [

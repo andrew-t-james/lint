@@ -97,24 +97,36 @@ export async function createProject(options) {
             eslint: "*",
             "eslint-config-prettier": "*",
             "eslint-plugin-prettier": "*",
+            "babel-eslint": "*",
             prettier: "*"
           };
-          const jsPackages = {
-            ...basePackages,
-            "babel-eslint": "*",
-            "babel-loader": "*"
+
+          const packages = {
+            javascript: {
+              ...basePackages,
+              "babel-loader": "*"
+            },
+            react: {
+              ...basePackages,
+              "eslint-plugin-react": "*"
+            },
+            "react-native": {
+              ...basePackages,
+              "eslint-plugin-react": "*",
+              "eslint-plugin-react-native": "*"
+            },
+            typescript: {
+              ...basePackages,
+              "@typescript-eslint/eslint-plugin": "*",
+              "@typescript-eslint/parser": "*",
+              typescript: "*"
+            }
           };
-          const tsPackages = {
-            ...basePackages,
-            "@typescript-eslint/eslint-plugin": "*",
-            "@typescript-eslint/parser": "*",
-            typescript: "*"
-          };
-          const packages =
-            options.template === "javascript" ? jsPackages : tsPackages;
+
           const installOptions = { dev: true, prefer: "npm" };
 
-          await install(packages, installOptions);
+          await install(packages[options.template], installOptions);
+          fs.unlinkSync(`${options.targetDirectory}/package-lock.json`);
         }
       },
       {

@@ -45,7 +45,7 @@ async function optionsPrompts(options) {
       type: "list",
       name: "template",
       message: "Choose a template.",
-      choices: ["javascript", "typescript"],
+      choices: ["javascript", "typescript", "react", "react-native"],
       default: defaultTemplate
     });
   }

@@ -2,5 +2,10 @@
 
 ## Installation & Usage
 
-## Collaborators
-
+```
+clone repository
+cd into repository
+yarn
+yarn link
+lint
+```
